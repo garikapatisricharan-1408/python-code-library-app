@@ -1,7 +1,7 @@
 ---
 services:
   db:
-    image: shaikmustafa/arshad:db
+    image: charan1408/flm2026:dbimage
     deploy:
       replicas: 1
     ports:
@@ -10,7 +10,7 @@ services:
       - mynetwork
 
   auth_service:
-    image: shaikmustafa/arshad:auth
+    image: charan1408/flm2026:authimage
     deploy:
       replicas: 1
     ports:
@@ -19,10 +19,9 @@ services:
       - mynetwork
     depends_on:
       - db
-    
 
   book_service:
-    image: shaikmustafa/arshad:book
+    image: charan1408/flm2026:bookimage
     deploy:
       replicas: 1
     ports:
@@ -31,8 +30,9 @@ services:
       - mynetwork
     depends_on:
       - db
+
   borrow_service:
-    image: shaikmustafa/arshad:borrow
+    image: charan1408/flm2026:borrowimage
     deploy:
       replicas: 1
     ports:
@@ -43,7 +43,7 @@ services:
       - db
 
   frontend:
-    image: shaikmustafa/arshad:frontend
+    image: charan1408/flm2026:appimage
     deploy:
       replicas: 1
     ports:
@@ -57,4 +57,4 @@ services:
 
 networks:
   mynetwork:
-    driver: bridge
+    driver: overlay
